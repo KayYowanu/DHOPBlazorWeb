@@ -1,78 +1,27 @@
 ﻿@page "/"
 <!-- ======= Intro Section ======= -->
-<section id="intro">
-    <div class="intro-container">
-        <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+<BlazorStrap.BSCarousel NumberOfItems="@items.Count" Fade="true" style="width:100%;">
+    <BlazorStrap.BSCarouselIndicators NumberOfItems="@items.Count" />
+    <div class="carousel-inner">
+        @for (int i = 0; i < items.Count; i++)
+        {
+            Item item = items[i];
+        <BlazorStrap.BSCarouselItem src="@item.Source" alt="@item.Alt" ActionLink="@items[i].ActionLink" ActionLinkTarget="@items[i].ActionLinkTarget" style="width:100%; height:700px;/*For Hero picture Sizing*/">
 
-            <ol class="carousel-indicators"></ol>
+            <BlazorStrap.BSCarouselCaption style="color:red; font-family:'Bell MT'; font-size:20px;" HeaderText="@item.Header"></BlazorStrap.BSCarouselCaption>
+            <BlazorStrap.BSCarouselCaption CaptionText="@item.Caption" style="color:blue; font-size:30px; padding-bottom:100px;" />
+            <!--*
+            <BlazorStrap.BSCarouselCaption CaptionText ="@item.Button" style="color:green; width:150px; margin-bottom:200px; margin-left:30%; background-color: #4CAF50; border: none; color: white; text-align: center; text-decoration: none; font-size: 16px; border-radius: 12px;">Button</BlazorStrap.BSCarouselCaption>
+            -->
+        </BlazorStrap.BSCarouselItem>
+         
 
-            <div class="carousel-inner" role="listbox">
-
-                <div class="carousel-item active" style="background-image: url(/img/intro-carousel/1.jpg)">
-                    <div class="carousel-container">
-                        <div class="container">
-                            <h2 class="animate__animated animate__fadeInDown">Leviticus 6:13</h2>
-                            <p class="animate__animated animate__fadeInUp">​​"the fire must be kept burning on the altar continuously; it must not go out ..."</p>
-                            <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Join us</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item" style="background-image: url(/img/intro-carousel/2.jpg)">
-                    <div class="carousel-container">
-                        <div class="container">
-                            <h2 class="animate__animated animate__fadeInDown">At vero eos et accusamus</h2>
-                            <p class="animate__animated animate__fadeInUp">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut.</p>
-                            <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item" style="background-image: url(/img/intro-carousel/3.jpg)">
-                    <div class="carousel-container">
-                        <div class="container">
-                            <h2 class="animate__animated animate__fadeInDown">Temporibus autem quibusdam</h2>
-                            <p class="animate__animated animate__fadeInUp">Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt omnis iste natus error sit voluptatem accusantium.</p>
-                            <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item" style="background-image: url(/img/intro-carousel/4.jpg)">
-                    <div class="carousel-container">
-                        <div class="container">
-                            <h2 class="animate__animated animate__fadeInDown">Nam libero tempore</h2>
-                            <p class="animate__animated animate__fadeInUp">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum.</p>
-                            <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item" style="background-image: url(/img/intro-carousel/5.jpg)">
-                    <div class="carousel-container">
-                        <div class="container">
-                            <h2 class="animate__animated animate__fadeInDown">Magnam aliquam quaerat</h2>
-                            <p class="animate__animated animate__fadeInUp">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-
-            <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-
-        </div>
+        }
     </div>
-</section><!-- End Intro Section -->
+    <BlazorStrap.BSCarouselControl CarouselDirection="BlazorStrap.CarouselDirection.Previous" NumberOfItems="@items.Count"  />
+    <BlazorStrap.BSCarouselControl CarouselDirection="BlazorStrap.CarouselDirection.Next" NumberOfItems="@items.Count" />
+</BlazorStrap.BSCarousel>
+<!-- ======= Intro Section ======= -->
 <main id="main">
 
     <!-- ======= Featured Services Section Section ======= -->
@@ -102,7 +51,7 @@
                 <div class="col-lg-2 box box-bg">
                     <h4 class="title"><a href="">WEDNESDAY</a></h4>
                     <p class="description">
-                        6:30-7:30am - Aliyah<br/>
+                        6:30-7:30am - Aliyah<br />
                         10am-noon - Worship/Sanctity of Life<br />
                         12-1pm - Businesses' Watch<br />
                         1-3pm - Persecuted Church<br />
@@ -129,4 +78,49 @@
             </div>
         </div>
     </section><!-- End Featured Services Section -->
-    </main>
+</main>
+@code {
+    int i = 0;
+    IList<Item> items = new List<Item>
+{
+       new Item {
+           Source = "/img/slide-1.jpg",
+           Alt ="First Slide",
+           Caption = "​​the fire must be kept burning on the altar continuously; it must not go out ...",
+           Header = "Leviticus 6:13",
+           //ActionLink = "link here/",
+           ActionLinkTarget = "_blank",
+           Button = "Watch Live Service"
+       },
+       new Item {
+           Source = "/img/slide-2.jpg",
+           Alt ="Second Slide",
+           Caption = "​​For I know the plans I have for you,” declares the LORD, “plans to prosper you and not to harm you, plans to give you hope and a future.",
+           Header = "Jeremiah 29:11",
+          // ActionLink = "link here/",
+           ActionLinkTarget = "_blank",
+           Button = "Watch Live Service-2"
+       },
+       new Item {
+           Source = "/img/slide-3.jpg",
+           Alt ="Third Slide",
+           Caption = "So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you; I will uphold you with my righteous right hand.",
+           Header = "Isaiah 41:10",
+          // ActionLink = "link here/",
+           ActionLinkTarget = "_blank",
+           Button = "Watch Live Service-3"
+
+       }
+
+   };
+    class Item
+    {
+        public string Button { get; set; }
+        public string Source { get; set; }
+        public string Alt { get; set; }
+        public string Caption { get; set; }
+        public string Header { get; set; }
+        public string ActionLink { get; set; }
+        public string ActionLinkTarget { get; set; }
+    }
+}
